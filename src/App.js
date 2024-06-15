@@ -26,7 +26,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <div className='app'>
       <Header />
       <Form onAddItems={handleAddItem} />
       <PackingList
@@ -35,7 +35,7 @@ const App = () => {
         onToggleItems={handleToggleItems}
       />
       <Footer />
-    </>
+    </div>
   );
 };
 
