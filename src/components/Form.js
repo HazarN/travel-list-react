@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Form = ({ onAddItems: handleAddItems }) => {
+const Form = ({ onAddItems: handleAddItem }) => {
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(1);
 
@@ -15,7 +15,7 @@ const Form = ({ onAddItems: handleAddItems }) => {
 
     const newItem = { description, quantity, packed: false, id: Date.now() };
 
-    handleAddItems(newItem);
+    handleAddItem(newItem);
 
     resetFormInputs();
   };

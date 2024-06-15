@@ -7,13 +7,16 @@ import PackingList from './components/PackingList';
 const App = () => {
   const [items, setItems] = useState([]);
 
-  const handleAddItems = item => setItems(items => [...items, item]);
+  const handleAddItem = item => setItems(items => [...items, item]);
+  const handleDeleteItem = id => {
+    setItems(items => items.filter(item => item.id !== id));
+  };
 
   return (
     <>
       <Header />
-      <Form onAddItems={handleAddItems} />
-      <PackingList items={items} />
+      <Form onAddItems={handleAddItem} />
+      <PackingList items={items} onDeleteItems={handleDeleteItem} />
       <Footer />
     </>
   );
