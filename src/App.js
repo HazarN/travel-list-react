@@ -4,10 +4,18 @@ import Form from './components/Form';
 import Header from './components/Header';
 import PackingList from './components/PackingList';
 
+const capitalize = str => {
+  return str.toLowerCase().replace(str[0], str[0].toUpperCase());
+};
+
 const App = () => {
   const [items, setItems] = useState([]);
 
-  const handleAddItem = item => setItems(items => [...items, item]);
+  const handleAddItem = item => {
+    item.description = capitalize(item.description);
+
+    setItems(items => [...items, item]);
+  };
   const handleDeleteItem = id => {
     setItems(items => items.filter(item => item.id !== id));
   };
@@ -34,7 +42,7 @@ const App = () => {
         onDeleteItems={handleDeleteItem}
         onToggleItems={handleToggleItems}
       />
-      <Footer />
+      <Footer items={items} />
     </div>
   );
 };
