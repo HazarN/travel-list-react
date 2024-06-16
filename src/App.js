@@ -11,6 +11,13 @@ const capitalize = str => {
 const App = () => {
   const [items, setItems] = useState([]);
 
+  const handleClearItems = () => {
+    const confirmed = window.confirm(
+      'Are you sure about removing for packing list?'
+    );
+
+    confirmed && setItems(items => []);
+  };
   const handleAddItem = item => {
     item.description = capitalize(item.description);
 
@@ -41,6 +48,7 @@ const App = () => {
         items={items}
         onDeleteItems={handleDeleteItem}
         onToggleItems={handleToggleItems}
+        onClearItems={handleClearItems}
       />
       <Footer items={items} />
     </div>
